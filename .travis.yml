@@ -1,3 +1,4 @@
+language: generic
 sudo: required
 services:
   - docker
@@ -6,7 +7,7 @@ before_install:
   - docker build -t rajender/react-docker -f Dockerfile.dev .
 
 script:
-  - docker run rajender/react-docker npm test
+  - docker run -e CI=true rajender/react-docker npm test -- -- --coverage
 # deploy:
 #   provider: elasticbeanstalk
 #   region: "ap-south-1"
